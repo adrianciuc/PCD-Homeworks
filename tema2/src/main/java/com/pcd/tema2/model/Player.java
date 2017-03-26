@@ -1,12 +1,10 @@
 package com.pcd.tema2.model;
 
-public class Player {
-
+public class Player extends Entity {
     private String name;
-    private Integer age;
-    private Integer rating;
+    private String age;
+    private String rating;
     private String country;
-    private Team team;
 
     public String getName() {
         return name;
@@ -16,19 +14,19 @@ public class Player {
         this.name = name;
     }
 
-    public Integer getAge() {
+    public String getAge() {
         return age;
     }
 
-    public void setAge(Integer age) {
+    public void setAge(String age) {
         this.age = age;
     }
 
-    public Integer getRating() {
+    public String getRating() {
         return rating;
     }
 
-    public void setRating(Integer rating) {
+    public void setRating(String rating) {
         this.rating = rating;
     }
 
@@ -38,13 +36,5 @@ public class Player {
 
     public void setCountry(String country) {
         this.country = country;
-    }
-
-    public Team getTeam() {
-        return team;
-    }
-
-    public void setTeam(Team team) {
-        this.team = team;
     }
 }

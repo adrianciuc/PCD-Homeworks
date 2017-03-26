@@ -5,7 +5,6 @@ import java.util.List;
 public class Team {
 
     private String name;
-    private League league;
     private Manager manager;
     private List<Player> players;
 
@@ -15,14 +14,6 @@ public class Team {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public League getLeague() {
-        return league;
-    }
-
-    public void setLeague(League league) {
-        this.league = league;
     }
 
     public Manager getManager() {

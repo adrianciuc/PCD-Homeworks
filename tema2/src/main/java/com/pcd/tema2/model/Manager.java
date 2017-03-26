@@ -1,10 +1,8 @@
 package com.pcd.tema2.model;
 
-public class Manager {
-
+public class Manager extends Entity {
     private String age;
     private String name;
-    private Team team;
 
     public String getAge() {
         return age;
@@ -20,13 +18,5 @@ public class Manager {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Team getTeam() {
-        return team;
-    }
-
-    public void setTeam(Team team) {
-        this.team = team;
     }
 }

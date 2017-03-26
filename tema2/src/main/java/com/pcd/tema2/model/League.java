@@ -2,8 +2,7 @@ package com.pcd.tema2.model;
 
 import java.util.List;
 
-public class League {
-
+public class League extends Entity {
     private String name;
     private String country;
     private List<Team> teams;
