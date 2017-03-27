@@ -3,17 +3,18 @@ package com.pcd.tema2.controller;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
+import java.util.function.Supplier;
 
 import com.pcd.tema2.model.League;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import static com.google.common.base.Strings.isNullOrEmpty;
 import static com.pcd.tema2.db.DB.leagues;
+import static java.lang.String.valueOf;
 import static java.util.stream.Collectors.toList;
 import static org.springframework.http.HttpStatus.SEE_OTHER;
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
@@ -21,7 +22,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 @RequestMapping("/leagues")
 public class LeagueController {
 
-    @RequestMapping(method = GET)
+    @RequestMapping(method = GET, produces = APPLICATION_JSON_VALUE)
     public ResponseEntity<List<League>> getAll(@RequestParam(value="name", defaultValue="") String name,
                                               @RequestParam(value = "country", defaultValue="")String country) {
         return ResponseEntity.ok()
@@ -31,13 +32,27 @@ public class LeagueController {
                         .collect(toList()));
     }
 
-    @RequestMapping(method = POST)
+    @RequestMapping(method = POST, consumes = APPLICATION_JSON_VALUE)
     public ResponseEntity addOne(@RequestBody League league) throws URISyntaxException {
         return leagues.stream()
-                .filter(it -> league.getName().isEmpty() || league.getName().equalsIgnoreCase(it.getName()))
-                .filter(it -> league.getCountry().isEmpty() || league.getCountry().equalsIgnoreCase(it.getCountry()))
-                .findAny()
+                .filter(it -> isNullOrEmpty(league.getName()) || league.getName().equalsIgnoreCase(it.getName()))
+                .filter(it -> isNullOrEmpty(league.getCountry()) || league.getCountry().equalsIgnoreCase(it.getCountry()))
+                .findFirst()
                 .map(it -> ResponseEntity.status(SEE_OTHER).location(URI.create("/leagues/" + it.getId())).build())
-                .orElse(ResponseEntity.created(URI.create("/leagues/" + league.getId())).build());
+                .orElseGet(() -> getResponseEntitySupplier(league));
+    }
+
+    @RequestMapping(value = "/{id}", method = GET, produces = APPLICATION_JSON_VALUE)
+    public ResponseEntity<League> getOne(@PathVariable String id) {
+        return leagues.stream()
+                .filter(it -> valueOf(it.getId()).equals(id))
+                .findFirst()
+                .map(it -> ResponseEntity.ok().body(it))
+                .orElse(ResponseEntity.notFound().build());
+    }
+
+    private ResponseEntity<Object> getResponseEntitySupplier(@RequestBody League league) {
+        leagues.add(league);
+        return ResponseEntity.created(URI.create("/leagues/" + league.getId())).build();
     }
 }

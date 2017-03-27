@@ -1,0 +1,42 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Tema2",
+		"_postman_id": "63e31ff7-371c-8ca8-aa8f-233525ddb307",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get all leagues",
+			"request": {
+				"url": "http://localhost:8080/leagues",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create one league",
+			"request": {
+				"url": "http://localhost:8080/leagues",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "  {\n    \"name\": \"BBVA\",\n    \"country\": \"Spain\",\n    \"teams\": [\n      {\n        \"name\": \"Barcelona\",\n        \"manager\": {\n          \"id\": 0,\n          \"age\": \"40\",\n          \"name\": \"Luis Enrique\"\n        },\n        \"players\": [\n          {\n            \"id\": 1,\n            \"name\": \"Messi\",\n            \"age\": \"29\",\n            \"rating\": \"99.9\",\n            \"country\": \"Argentina\"\n          }\n        ]\n      },\n      {\n        \"name\": \"Atletico de Madrid\",\n        \"manager\": {\n          \"id\": 2,\n          \"age\": \"35\",\n          \"name\": \"Diego Simeone\"\n        },\n        \"players\": [\n          {\n            \"id\": 3,\n            \"name\": \"Antoine Griezman\",\n            \"age\": \"25\",\n            \"rating\": \"88.0\",\n            \"country\": \"France\"\n          }\n        ]\n      }\n    ]\n  }"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
