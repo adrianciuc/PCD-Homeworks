@@ -15,8 +15,7 @@ import static java.lang.String.valueOf;
 import static java.util.stream.Collectors.toList;
 import static org.springframework.http.HttpStatus.SEE_OTHER;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
-import static org.springframework.web.bind.annotation.RequestMethod.GET;
-import static org.springframework.web.bind.annotation.RequestMethod.POST;
+import static org.springframework.web.bind.annotation.RequestMethod.*;
 
 @RestController
 @RequestMapping("/leagues")
@@ -49,6 +48,38 @@ public class LeagueController {
                 .findFirst()
                 .map(it -> ResponseEntity.ok().body(it))
                 .orElse(ResponseEntity.notFound().build());
+    }
+
+    @RequestMapping(value = "/{id}", method = DELETE)
+    public ResponseEntity deleteOne(@PathVariable String id) {
+        return leagues.stream()
+                .filter(it -> valueOf(it.getId()).equals(id))
+                .findFirst()
+                .map(this::deleteLeague)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
+    @RequestMapping(value = "/{id}", consumes = APPLICATION_JSON_VALUE)
+    public ResponseEntity updateOne(@PathVariable String id,
+                                    @RequestBody League league) throws URISyntaxException {
+        return leagues.stream()
+                .filter(it -> isNullOrEmpty(league.getName()) || league.getName().equalsIgnoreCase(it.getName()))
+                .filter(it -> isNullOrEmpty(league.getCountry()) || league.getCountry().equalsIgnoreCase(it.getCountry()))
+                .findFirst()
+                .map(it -> updateEntity(id, it, league))
+                .orElse(ResponseEntity.notFound().build());
+    }
+
+    private ResponseEntity updateEntity(String id, League existentLeague, League newLeague) {
+        newLeague.setId(Integer.valueOf(id));
+        leagues.remove(existentLeague);
+        leagues.add(newLeague);
+        return ResponseEntity.ok().build();
+    }
+
+    private ResponseEntity deleteLeague(League league) {
+        leagues.remove(league);
+        return ResponseEntity.ok().build();
     }
 
     private ResponseEntity<Object> getResponseEntitySupplier(@RequestBody League league) {
