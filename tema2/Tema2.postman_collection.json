@@ -8,77 +8,162 @@
 	},
 	"item": [
 		{
-			"name": "Get all leagues",
-			"request": {
-				"url": "http://localhost:8080/leagues",
-				"method": "GET",
-				"header": [],
-				"body": {},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "Get one league",
-			"request": {
-				"url": "http://localhost:8080/leagues/4",
-				"method": "GET",
-				"header": [],
-				"body": {},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "Delete one league",
-			"request": {
-				"url": "http://localhost:8080/leagues/4",
-				"method": "DELETE",
-				"header": [],
-				"body": {},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "Create one league",
-			"request": {
-				"url": "http://localhost:8080/leagues",
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
+			"name": "Leagues",
+			"description": "",
+			"item": [
+				{
+					"name": "Get all leagues",
+					"request": {
+						"url": "http://localhost:8080/leagues",
+						"method": "GET",
+						"header": [],
+						"body": {},
 						"description": ""
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "  {\n    \"name\": \"BBVA\",\n    \"country\": \"Spain\",\n    \"teams\": [\n      {\n        \"name\": \"Barcelona\",\n        \"manager\": {\n          \"id\": 0,\n          \"age\": \"40\",\n          \"name\": \"Luis Enrique\"\n        },\n        \"players\": [\n          {\n            \"id\": 1,\n            \"name\": \"Messi\",\n            \"age\": \"29\",\n            \"rating\": \"99.9\",\n            \"country\": \"Argentina\"\n          }\n        ]\n      },\n      {\n        \"name\": \"Atletico de Madrid\",\n        \"manager\": {\n          \"id\": 2,\n          \"age\": \"35\",\n          \"name\": \"Diego Simeone\"\n        },\n        \"players\": [\n          {\n            \"id\": 3,\n            \"name\": \"Antoine Griezman\",\n            \"age\": \"25\",\n            \"rating\": \"88.0\",\n            \"country\": \"France\"\n          }\n        ]\n      }\n    ]\n  }"
+					},
+					"response": []
 				},
-				"description": ""
-			},
-			"response": []
+				{
+					"name": "Get one league",
+					"request": {
+						"url": "http://localhost:8080/leagues/4",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Delete one league",
+					"request": {
+						"url": "http://localhost:8080/leagues/4",
+						"method": "DELETE",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Create one league",
+					"request": {
+						"url": "http://localhost:8080/leagues",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "  {\n    \"name\": \"BBVA\",\n    \"country\": \"Spain\",\n    \"teams\": [\n      {\n        \"name\": \"Barcelona\",\n        \"manager\": {\n          \"id\": 0,\n          \"age\": \"40\",\n          \"name\": \"Luis Enrique\"\n        },\n        \"players\": [\n          {\n            \"id\": 1,\n            \"name\": \"Messi\",\n            \"age\": \"29\",\n            \"rating\": \"99.9\",\n            \"country\": \"Argentina\"\n          }\n        ]\n      },\n      {\n        \"name\": \"Atletico de Madrid\",\n        \"manager\": {\n          \"id\": 2,\n          \"age\": \"35\",\n          \"name\": \"Diego Simeone\"\n        },\n        \"players\": [\n          {\n            \"id\": 3,\n            \"name\": \"Antoine Griezman\",\n            \"age\": \"25\",\n            \"rating\": \"88.0\",\n            \"country\": \"France\"\n          }\n        ]\n      }\n    ]\n  }"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Update one league",
+					"request": {
+						"url": "http://localhost:8080/leagues/4",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "  {\n    \"name\": \"BBVA\",\n    \"country\": \"Spain\"\n  }"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
 		},
 		{
-			"name": "Update one league",
-			"request": {
-				"url": "http://localhost:8080/leagues/4",
-				"method": "PUT",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
+			"name": "Teams",
+			"description": "",
+			"item": [
+				{
+					"name": "Get all teams",
+					"request": {
+						"url": "http://localhost:8080/leagues/13/teams",
+						"method": "GET",
+						"header": [],
+						"body": {},
 						"description": ""
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "  {\n    \"name\": \"BBVA\",\n    \"country\": \"Spain\"\n  }"
+					},
+					"response": []
 				},
-				"description": ""
-			},
-			"response": []
+				{
+					"name": "Get one team",
+					"request": {
+						"url": "http://localhost:8080/leagues/13/teams/9",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Create one team",
+					"request": {
+						"url": "http://localhost:8080/leagues/13/teams",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"v2Paris Saint-Germain\",\n  \"manager\": {\n    \"id\": 7,\n    \"age\": \"60\",\n    \"name\": \"Arsene Wanger\"\n  },\n  \"players\": [\n    {\n      \"id\": 8,\n      \"name\": \"Julian Draxler\",\n      \"age\": \"23\",\n      \"rating\": \"84.0\",\n      \"country\": \"Germany\"\n    }\n  ]\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Delete one team",
+					"request": {
+						"url": "http://localhost:8080/leagues/13/teams/9",
+						"method": "DELETE",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Update one team",
+					"request": {
+						"url": "http://localhost:8080/leagues/13/teams/9",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"v2Paris Saint-Germain\",\n  \"manager\": {\n    \"id\": 7,\n    \"age\": \"60\",\n    \"name\": \"Arsene Wanger\"\n  }\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }

@@ -2,7 +2,7 @@ package com.pcd.tema2.model;
 
 import java.util.List;
 
-public class Team {
+public class Team extends Entity {
 
     private String name;
     private Manager manager;
