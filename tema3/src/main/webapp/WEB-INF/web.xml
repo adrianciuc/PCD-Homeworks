@@ -1,14 +1,21 @@
 <web-app xmlns="http://java.sun.com/xml/ns/javaee" version="2.5">
     <servlet>
-        <servlet-name>ComingSoonServlet</servlet-name>
-        <servlet-class>com.fii.pcd.ComingSoonServlet</servlet-class>
+        <servlet-name>ProfessorServlet</servlet-name>
+        <servlet-class>com.fii.pcd.ProfessorServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>StudentServlet</servlet-name>
+        <servlet-class>com.fii.pcd.StudentServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>ComingSoonServlet</servlet-name>
-        <url-pattern>/</url-pattern>
+        <servlet-name>ProfessorServlet</servlet-name>
+        <url-pattern>/professor</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>StudentServlet</servlet-name>
+        <url-pattern>/student</url-pattern>
     </servlet-mapping>
     <welcome-file-list>
-        <welcome-file>index.jsp</welcome-file>
         <welcome-file>index.html</welcome-file>
     </welcome-file-list>
 </web-app>
