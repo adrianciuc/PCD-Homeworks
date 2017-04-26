@@ -1,4 +1,7 @@
 <web-app xmlns="http://java.sun.com/xml/ns/javaee" version="2.5">
+    <listener>
+        <listener-class>com.fii.pcd.config.EntityManagerListener</listener-class>
+    </listener>
     <servlet>
         <servlet-name>ProfessorServlet</servlet-name>
         <servlet-class>com.fii.pcd.ProfessorServlet</servlet-class>
