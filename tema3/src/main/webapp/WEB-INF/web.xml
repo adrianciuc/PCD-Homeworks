@@ -1,24 +1,44 @@
 <web-app xmlns="http://java.sun.com/xml/ns/javaee" version="2.5">
-    <listener>
-        <listener-class>com.fii.pcd.config.EntityManagerListener</listener-class>
-    </listener>
+    <!--Spring-->
+    <context-param>
+        <param-name>contextClass</param-name>
+        <param-value>
+            org.springframework.web.context.support.AnnotationConfigWebApplicationContext
+        </param-value>
+    </context-param>
+
+    <!-- Configuration locations must consist of one or more comma- or space-delimited
+         fully-qualified @Configuration classes. Fully-qualified packages may also be
+         specified for component-scanning -->
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>com.fii.pcd.WebAppConfig</param-value>
+    </context-param>
+    <!--&lt;!&ndash; Creates the Spring Container shared by all Servlets and Filters &ndash;&gt;-->
+    <!--<listener>-->
+        <!--<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>-->
+    <!--</listener>-->
+    <!-- Processes application requests -->
     <servlet>
-        <servlet-name>ProfessorServlet</servlet-name>
-        <servlet-class>com.fii.pcd.ProfessorServlet</servlet-class>
+        <servlet-name>appServlet</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextClass</param-name>
+            <param-value>
+                org.springframework.web.context.support.AnnotationConfigWebApplicationContext
+            </param-value>
+        </init-param>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>
+                com.fii.pcd.WebAppConfig
+            </param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
     </servlet>
-    <servlet>
-        <servlet-name>StudentServlet</servlet-name>
-        <servlet-class>com.fii.pcd.StudentServlet</servlet-class>
-    </servlet>
+
     <servlet-mapping>
-        <servlet-name>ProfessorServlet</servlet-name>
-        <url-pattern>/professor</url-pattern>
+        <servlet-name>appServlet</servlet-name>
+        <url-pattern>/</url-pattern>
     </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>StudentServlet</servlet-name>
-        <url-pattern>/student</url-pattern>
-    </servlet-mapping>
-    <welcome-file-list>
-        <welcome-file>index.html</welcome-file>
-    </welcome-file-list>
 </web-app>
