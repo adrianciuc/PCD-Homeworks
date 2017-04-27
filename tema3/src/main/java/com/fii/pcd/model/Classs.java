@@ -19,6 +19,6 @@ public class Classs {
             name="classs_professor",
             joinColumns=@JoinColumn(name="id_classs", referencedColumnName="id"),
             inverseJoinColumns=@JoinColumn(name="id_professor", referencedColumnName="id"))
-    private List<Professor> professor;
+    private List<Professor> professors;
 }
 

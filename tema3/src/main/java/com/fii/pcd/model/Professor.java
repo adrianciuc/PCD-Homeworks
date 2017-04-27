@@ -14,7 +14,7 @@ public class Professor {
     @Column(name = "name")
     private String name;
 
-    @OneToMany(mappedBy = "professor")
+    @ManyToMany(mappedBy = "professors")
     private List<Classs> classses;
 
     @OneToOne
