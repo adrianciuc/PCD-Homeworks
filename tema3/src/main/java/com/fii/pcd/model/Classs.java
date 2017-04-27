@@ -1,6 +1,7 @@
 package com.fii.pcd.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "classs")
@@ -13,8 +14,11 @@ public class Classs {
     @Column(name = "name")
     private String name;
 
-    @ManyToOne
-    @JoinColumn(name = "id_professor")
-    private Professor professor;
+    @ManyToMany
+    @JoinTable(
+            name="classs_professor",
+            joinColumns=@JoinColumn(name="id_classs", referencedColumnName="id"),
+            inverseJoinColumns=@JoinColumn(name="id_professor", referencedColumnName="id"))
+    private List<Professor> professor;
 }
 
