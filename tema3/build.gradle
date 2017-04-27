@@ -34,9 +34,10 @@ repositories {
 
 dependencies {
 	providedCompile group: 'javax.servlet', name: 'servlet-api', version:'2.5'
-	compile 'com.google.appengine:appengine:+'
-    compile 'org.hibernate:hibernate-entitymanager:4.3.6.Final'
+    compile group: 'com.google.appengine:appengine-api-1.0-sdk:1.6.3'
+    compile 'org.hibernate:hibernate-entitymanager:4.2.0.Final'
     compile 'mysql:mysql-connector-java:5.1.40'
+    compile 'com.google.cloud.sql:mysql-socket-factory:1.0.2'
 
 
     // Use JUnit test framework

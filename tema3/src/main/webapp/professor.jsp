@@ -35,43 +35,43 @@
                 <td>1</td>
                 <td>Column content</td>
                 <td>Column content</td>
-                <td><p><span class="glyphicon glyphicon-plus"></span></p> </td>
+                <td><p><span class="glyphicon glyphicon-plus"></span></p></td>
             </tr>
             <tr>
                 <td>2</td>
                 <td>Column content</td>
                 <td>Column content</td>
-                <td><p><span class="glyphicon glyphicon-plus"></span></p> </td>
+                <td><p><span class="glyphicon glyphicon-plus"></span></p></td>
             </tr>
             <tr class="info">
                 <td>3</td>
                 <td>Column content</td>
                 <td>Column content</td>
-                <td><p><span class="glyphicon glyphicon-plus"></span></p> </td>
+                <td><p><span class="glyphicon glyphicon-plus"></span></p></td>
             </tr>
             <tr class="success">
                 <td>4</td>
                 <td>Column content</td>
                 <td>Column content</td>
-                <td><p><span class="glyphicon glyphicon-plus"></span></p> </td>
+                <td><p><span class="glyphicon glyphicon-plus"></span></p></td>
             </tr>
             <tr class="danger">
                 <td>5</td>
                 <td>Column content</td>
                 <td>Column content</td>
-                <td><p><span class="glyphicon glyphicon-plus"></span></p> </td>
+                <td><p><span class="glyphicon glyphicon-plus"></span></p></td>
             </tr>
             <tr class="warning">
                 <td>6</td>
                 <td>Column content</td>
                 <td>Column content</td>
-                <td><p><span class="glyphicon glyphicon-plus"></span></p> </td>
+                <td><p><span class="glyphicon glyphicon-plus"></span></p></td>
             </tr>
             <tr class="active">
                 <td>7</td>
                 <td>Column content</td>
                 <td>Column content</td>
-                <td><p><span class="glyphicon glyphicon-plus"></span></p> </td>
+                <td><p><span class="glyphicon glyphicon-plus"></span></p></td>
             </tr>
             </tbody>
         </table>
@@ -91,44 +91,44 @@
                 <td>1</td>
                 <td>Column content2</td>
                 <td>Column content2</td>
-                <td><p><span class="glyphicon glyphicon-plus"></span></p> </td>
+                <td><p><span class="glyphicon glyphicon-plus"></span></p></td>
             </tr>
             <tr>
                 <td>2</td>
                 <td>Column content2</td>
                 <td>Column content2</td>
-                <td><p><span class="glyphicon glyphicon-plus"></span></p> </td>
+                <td><p><span class="glyphicon glyphicon-plus"></span></p></td>
             </tr>
             <tr class="info">
                 <td>3</td>
                 <td>Column content2</td>
                 <td>Column content2</td>
-                <td><p><span class="glyphicon glyphicon-plus"></span></p> </td>
+                <td><p><span class="glyphicon glyphicon-plus"></span></p></td>
             </tr>
             <tr class="success">
                 <td>4</td>
                 <td>Column content2</td>
                 <td>Column content2</td>
-                <td><p><span class="glyphicon glyphicon-plus"></span></p> </td>
+                <td><p><span class="glyphicon glyphicon-plus"></span></p></td>
 
             </tr>
             <tr class="danger">
                 <td>5</td>
                 <td>Column content2</td>
                 <td>Column content2</td>
-                <td><p><span class="glyphicon glyphicon-plus"></span></p> </td>
+                <td><p><span class="glyphicon glyphicon-plus"></span></p></td>
             </tr>
             <tr class="warning">
                 <td>6</td>
                 <td>Column content2</td>
                 <td>Column content2</td>
-                <td><p><span class="glyphicon glyphicon-plus"></span></p> </td>
+                <td><p><span class="glyphicon glyphicon-plus"></span></p></td>
             </tr>
             <tr class="active">
                 <td>7</td>
                 <td>Column content2</td>
                 <td>Column content2</td>
-                <td><p><span class="glyphicon glyphicon-plus"></span></p> </td>
+                <td><p><span class="glyphicon glyphicon-plus"></span></p></td>
             </tr>
             </tbody>
         </table>
