@@ -16,70 +16,57 @@
     <script src="../../js/bootstrap.min.js"></script>
 </head>
 <body>
-<ul class="nav nav-tabs">
-    <c:forEach items="${profClasses}" var="profClass">
-        <li><a href="#home" data-toggle="tab">${profClass.name}</a></li>
-    </c:forEach>
-</ul>
-<div id="myTabContent" class="tab-content">
-        <div class="tab-pane fade active in" id="${profClass.name}">
-            <table class="table table-striped table-hover ">
-                <thead>
-                    <tr>
-                        <th>Id Elev</th>
-                        <th>Nume</th>
-                        <th>Note</th>
-                        <th>Adauga Nota</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Column content</td>
-                        <td>Column content</td>
-                        <td><p><span class="glyphicon glyphicon-plus"></span></p></td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Column content</td>
-                        <td>Column content</td>
-                        <td><p><span class="glyphicon glyphicon-plus"></span></p></td>
-                    </tr>
-                    <tr class="info">
-                        <td>3</td>
-                        <td>Column content</td>
-                        <td>Column content</td>
-                        <td><p><span class="glyphicon glyphicon-plus"></span></p></td>
-                    </tr>
-                    <tr class="success">
-                        <td>4</td>
-                        <td>Column content</td>
-                        <td>Column content</td>
-                        <td><p><span class="glyphicon glyphicon-plus"></span></p></td>
-                    </tr>
-                    <tr class="danger">
-                        <td>5</td>
-                        <td>Column content</td>
-                        <td>Column content</td>
-                        <td><p><span class="glyphicon glyphicon-plus"></span></p></td>
-                    </tr>
-                    <tr class="warning">
-                        <td>6</td>
-                        <td>Column content</td>
-                        <td>Column content</td>
-                        <td><p><span class="glyphicon glyphicon-plus"></span></p></td>
-                    </tr>
-                    <tr class="active">
-                        <td>7</td>
-                        <td>Column content</td>
-                        <td>Column content</td>
-                        <td><p><span class="glyphicon glyphicon-plus"></span></p></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
 
-</div>
+    <h1>Hi ${profNameAndSubject.professorName} , proffessor of ${profNameAndSubject.subjectName} </h1>
 
+
+    <ul class="nav nav-tabs">
+        <c:forEach items="${profClasses}" var="profClass">
+            <li><a href="#${profClass.name}" data-toggle="tab">${profClass.name}</a></li>
+        </c:forEach>
+    </ul>
+
+    <div id="myTabContent" class="tab-content">
+        <c:forEach items="${profClasses}" var="profClass" varStatus="loop">
+
+            <div class="tab-pane fade <c:if test="${loop.count eq '1'}">active</c:if> in" id="${profClass.name}">
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>Id Student</th>
+                            <th>Name</th>
+                            <th>Grades</th>
+                            <th>Add Grade</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <c:forEach items="${profClass.students}" var="student" varStatus="loop">
+                            <tr
+                                    <c:forEach items="${student.grades}" var="gradeObject">
+                                        <c:choose>
+                                            <c:when test="${gradeObject.grade lt '5'}">
+                                                 class="danger"
+                                            </c:when>
+                                            <c:otherwise>
+                                                class="success"
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </c:forEach>
+                            >
+                                <td>${loop.count}</td>
+                                <td>${student.name}</td>
+                                <td>
+                                    <c:forEach items="${student.grades}" var="gradeObject" varStatus="innerloop">
+                                        <span><c:if test="${innerloop.index ne '0'}">,</c:if>${gradeObject.grade}</span>
+                                    </c:forEach>
+                                </td>
+                                <td><p><span class="glyphicon glyphicon-plus"></span></p></td>
+                            </tr>
+                        </c:forEach>
+                    </tbody>
+                </table>
+            </div>
+        </c:forEach>
+    </div>
 </body>
 </html>

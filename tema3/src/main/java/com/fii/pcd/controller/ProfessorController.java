@@ -1,6 +1,7 @@
 package com.fii.pcd.controller;
 
 import com.fii.pcd.bean.ClassWithStudentsBean;
+import com.fii.pcd.bean.ProfessorAndSubjectBean;
 import com.fii.pcd.model.Professor;
 import com.fii.pcd.service.ProfessorService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,10 +26,13 @@ public class ProfessorController {
 
     @RequestMapping(method = GET)
     public String getProfessorsPage(Model model) {
-        Professor professor = new Professor();
-        professor.setId(1);
-        List<ClassWithStudentsBean> classesOfProffesor = professorService.getClassesForProffesor(professor);
+
+        // TODO change hardcoded '1' to dynamic id provided in URL
+        List<ClassWithStudentsBean> classesOfProffesor = professorService.getClassesForProffesor(1);
         model.addAttribute("profClasses", classesOfProffesor);
+
+        ProfessorAndSubjectBean professorAndSubject = professorService.getProfessorNameAndSubjectForId(1);
+        model.addAttribute("profNameAndSubject", professorAndSubject);
         return "professor";
     }
 

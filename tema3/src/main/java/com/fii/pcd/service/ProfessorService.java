@@ -1,10 +1,9 @@
 package com.fii.pcd.service;
 
 import com.fii.pcd.bean.ClassWithStudentsBean;
+import com.fii.pcd.bean.ProfessorAndSubjectBean;
 import com.fii.pcd.bean.StudentBean;
-import com.fii.pcd.model.Classs;
-import com.fii.pcd.model.Professor;
-import com.fii.pcd.model.Student;
+import com.fii.pcd.model.*;
 import com.fii.pcd.repository.ProfessorRepository;
 import com.fii.pcd.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,22 +24,41 @@ public class ProfessorService {
         this.studentRepository = studentRepository;
     }
 
-    public List<ClassWithStudentsBean> getClassesForProffesor(Professor professor) {
-        List<Classs> classses = professorRepository.findOne(professor.getId()).getClassses();
+    public List<ClassWithStudentsBean> getClassesForProffesor(int professorId) {
+        Professor p = professorRepository.findOne(professorId);
+        List<Classs> classses = p.getClassses();
         List<ClassWithStudentsBean> beans = new ArrayList<>();
+
         for (Classs classs : classses) {
             ClassWithStudentsBean bean = new ClassWithStudentsBean();
             List<Student> students = studentRepository.findByClasss(classs);
             List<StudentBean> studentBeans = new ArrayList<>();
+
             for (Student student : students) {
+
                 StudentBean studentToAdd = new StudentBean();
                 studentToAdd.setName(student.getName());
+                studentToAdd.setGrades(student.getGrades());
                 studentBeans.add(studentToAdd);
+
             }
             bean.setName(classs.getName());
             bean.setStudents(studentBeans);
+
             beans.add(bean);
         }
         return beans;
     }
+
+    public ProfessorAndSubjectBean getProfessorNameAndSubjectForId(int professorId) {
+        ProfessorAndSubjectBean professorAndSubject = new ProfessorAndSubjectBean();
+        Professor p = professorRepository.findOne(professorId);
+
+        professorAndSubject.setProfessorName(p.getName());
+        professorAndSubject.setSubjectName(p.getSubject().getName());
+
+        return professorAndSubject;
+
+    }
+
 }

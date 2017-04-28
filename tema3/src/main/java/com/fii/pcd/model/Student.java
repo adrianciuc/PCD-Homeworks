@@ -18,8 +18,8 @@ public class Student {
     @JoinColumn(name = "id_classs")
     private Classs classs;
 
-    @OneToMany(mappedBy = "student")
-    private List<Grade> grade;
+    @OneToMany(mappedBy = "student", fetch = FetchType.EAGER)
+    private List<Grade> grades;
 
     @OneToMany
     private List<Subject> subjects;
@@ -48,12 +48,12 @@ public class Student {
         this.classs = classs;
     }
 
-    public List<Grade> getGrade() {
-        return grade;
+    public List<Grade> getGrades() {
+        return grades;
     }
 
-    public void setGrade(List<Grade> grade) {
-        this.grade = grade;
+    public void setGrades(List<Grade> s) {
+        this.grades = grades;
     }
 
     public List<Subject> getSubjects() {

@@ -5,6 +5,7 @@ import java.util.List;
 public class ClassWithStudentsBean {
 
     private String name;
+
     private List<StudentBean> students;
 
     public String getName() {
