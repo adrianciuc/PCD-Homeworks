@@ -15,6 +15,10 @@
     <script src="../../js/bootstrap.min.js"></script>
 </head>
 <body>
+<form id="logout" action="/logout" method="post" >
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+    <input name="submit" type="submit" value="Logout" />
+</form>
 <table class="table table-striped table-hover ">
     <thead>
     <tr>

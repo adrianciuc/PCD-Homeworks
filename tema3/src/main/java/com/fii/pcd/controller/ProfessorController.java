@@ -2,9 +2,10 @@ package com.fii.pcd.controller;
 
 import com.fii.pcd.bean.ClassWithStudentsBean;
 import com.fii.pcd.bean.ProfessorAndSubjectBean;
-import com.fii.pcd.model.Professor;
+import com.fii.pcd.security.CustomUserDetails;
 import com.fii.pcd.service.ProfessorService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,15 +26,20 @@ public class ProfessorController {
         this.professorService = professorService;
     }
 
-    @RequestMapping(method = GET, params = "profId")
-    public String getProfessorsPage(Model model, @RequestParam(value = "profId") int profId) {
+    @RequestMapping(method = GET)
+    public String getProfessorsPage(Model model) {
 
-        List<ClassWithStudentsBean> classesOfProffesor = professorService.getClassesForProffesor(profId);
+        Integer professorId = getAuthenticatedProfessor().getUserId();
+        List<ClassWithStudentsBean> classesOfProffesor = professorService.getClassesForProffesor(professorId);
         model.addAttribute("profClasses", classesOfProffesor);
 
-        ProfessorAndSubjectBean professorAndSubject = professorService.getProfessorNameAndSubjectForId(profId);
+        ProfessorAndSubjectBean professorAndSubject = professorService.getProfessorNameAndSubjectForId(professorId);
         model.addAttribute("profNameAndSubject", professorAndSubject);
         return "professor";
+    }
+
+    private CustomUserDetails getAuthenticatedProfessor() {
+        return (CustomUserDetails)(SecurityContextHolder.getContext().getAuthentication().getPrincipal());
     }
 
 }

@@ -18,6 +18,10 @@
 <body>
 
     <h1>Hi ${profNameAndSubject.professorName} , proffessor of ${profNameAndSubject.subjectName} </h1>
+    <form id="logout" action="/logout" method="post" >
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+        <input name="submit" type="submit" value="Logout" />
+    </form>
 
 
     <ul class="nav nav-tabs">
