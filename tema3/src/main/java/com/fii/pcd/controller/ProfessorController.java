@@ -2,7 +2,6 @@ package com.fii.pcd.controller;
 
 import com.fii.pcd.bean.ClassWithStudentsBean;
 import com.fii.pcd.bean.ProfessorAndSubjectBean;
-import com.fii.pcd.model.Professor;
 import com.fii.pcd.service.ProfessorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.List;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
+import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 @Controller
 @RequestMapping("/professor")
@@ -33,6 +33,12 @@ public class ProfessorController {
 
         ProfessorAndSubjectBean professorAndSubject = professorService.getProfessorNameAndSubjectForId(profId);
         model.addAttribute("profNameAndSubject", professorAndSubject);
+        return "professor";
+    }
+
+    @RequestMapping(method = POST)
+    public String addGradeToStudent(Model model, @RequestParam("studentGrade") String studentGrade, @RequestParam("subjectId") String subjectId) {
+        /*System.out.println(studentGrade + " " + subjectId);*/
         return "professor";
     }
 

@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="h" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
     <title>EDUE</title>
@@ -60,7 +61,15 @@
                                         <span><c:if test="${innerloop.index ne '0'}">,</c:if>${gradeObject.grade}</span>
                                     </c:forEach>
                                 </td>
-                                <td><p><span class="glyphicon glyphicon-plus"></span></p></td>
+                                <td><p>
+                                        <%--<h:form action="/professor" method="post">
+                                            <h:input path="studentGrade"></h:input>
+                                            <h:hidden path="subjectId">${profNameAndSubject.subjectId}</h:hidden>
+                                            <input type="submit" value="Submit"/>
+                                        </h:form>--%>
+                                        <span class='glyphicon glyphicon-plus'></span>
+                                    </p>
+                                </td>
                             </tr>
                         </c:forEach>
                     </tbody>
