@@ -6,6 +6,8 @@ public class ProfessorAndSubjectBean {
 
     private String subjectName;
 
+    private int subjectId;
+
     public String getProfessorName() {
         return professorName;
     }
@@ -20,5 +22,13 @@ public class ProfessorAndSubjectBean {
 
     public void setSubjectName(String subjectName) {
         this.subjectName = subjectName;
+    }
+
+    public int getSubjectId() {
+        return subjectId;
+    }
+
+    public void setSubjectId(int subjectId) {
+        this.subjectId = subjectId;
     }
 }
