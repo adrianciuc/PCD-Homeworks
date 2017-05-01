@@ -2,11 +2,11 @@
   Created by IntelliJ IDEA.
   User: adria
   Date: 01/05/2017
-  Time: 12:06
+  Time: 18:18
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -22,26 +22,15 @@
     <script src="../../js/bootstrap.min.js"></script>
 </head>
 <body>
-    <header id="top" class="header">
-        <div class="text-vertical-center">
-            <form name='f' action="/login" method='POST'>
-                <h1>EDUE</h1>
-                <table>
-                    <tr>
-                        <td>User:</td>
-                        <td><input type='text' name='ssoId' value=''></td>
-                    </tr>
-                    <tr>
-                        <td>Password:</td>
-                        <td><input type='password' name='password' /></td>
-                    </tr>
-                    <input type="hidden" name="${_csrf.parameterName}"  value="${_csrf.token}" />
-                    <tr>
-                        <td><input name="submit" type="submit" value="submit" /></td>
-                    </tr>
-                </table>
-            </form>
-        </div>
-    </header>
+<header id="top" class="header">
+    <div class="text-vertical-center">
+        <h1>EDUE</h1>
+        <h3>Online school catalog</h3>
+        <br>
+        <a href="#about" class="btn btn-dark btn-lg">Get it now</a>
+        <span></span>
+        <a href="/login" class="btn btn-dark btn-lg">Login</a>
+    </div>
+</header>
 </body>
 </html>
