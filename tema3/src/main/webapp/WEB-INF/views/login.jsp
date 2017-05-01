@@ -14,6 +14,7 @@
     <title>EDUE</title>
     <link rel="shortcut icon" href="../../img/favicon.ico" />
     <link rel="stylesheet" href="../../css/mainPage.css">
+    <link rel="stylesheet" href="../../css/login.css">
     <link rel="stylesheet" href="../../css/bootstrap.min.css">
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="stylesheet" href="../../fonts/font-awesome-4.7.0/css/font-awesome.min.css">
@@ -24,23 +25,27 @@
 <body>
     <header id="top" class="header">
         <div class="text-vertical-center">
-            <form name='f' action="/login" method='POST'>
+            <%--<form name='f' action="/login" method='POST'>--%>
+                <%--<h1>EDUE</h1>--%>
+                <%--User:--%>
+                <%--<input type='text' name='ssoId' value=''>--%>
+                <%--Password:--%>
+                <%--<input type='password' name='password' />--%>
+                <%--<input type="hidden" name="${_csrf.parameterName}"  value="${_csrf.token}" />--%>
+                <%--<input name="submit" type="submit" value="submit" />--%>
+            <%--</form>--%>
                 <h1>EDUE</h1>
-                <table>
-                    <tr>
-                        <td>User:</td>
-                        <td><input type='text' name='ssoId' value=''></td>
-                    </tr>
-                    <tr>
-                        <td>Password:</td>
-                        <td><input type='password' name='password' /></td>
-                    </tr>
-                    <input type="hidden" name="${_csrf.parameterName}"  value="${_csrf.token}" />
-                    <tr>
-                        <td><input name="submit" type="submit" value="submit" /></td>
-                    </tr>
-                </table>
-            </form>
+                <div class="container">
+                    <div class="card card-container">
+                        <form class="form-signin" name='f' action="/login" method='POST'>
+                            <span id="reauth-email" class="reauth-email"></span>
+                            <input type="text" name='ssoId' value='' id="inputEmail" class="form-control" placeholder="Name" required autofocus>
+                            <input type="password" name='password' id="inputPassword" class="form-control" placeholder="Password" required>
+                            <input type="hidden" name="${_csrf.parameterName}"  value="${_csrf.token}" />
+                            <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign in</button>
+                        </form>
+                    </div>
+                </div>
         </div>
     </header>
 </body>

@@ -64,9 +64,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/admin", "/admin/**")
                 .access("hasRole('ADM')")
                 .and()
+                .authorizeRequests()
+                .antMatchers("/enter")
+                .access("hasRole('PROF') or hasRole('STUD') or hasRole('ADM')")
+                .and()
                 .formLogin()
                 .loginPage("/login")
                 .loginProcessingUrl("/login")
+                .defaultSuccessUrl("/enter")
                 .usernameParameter("ssoId")
                 .passwordParameter("password")
                 .and()
@@ -78,7 +83,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .exceptionHandling()
                 .accessDeniedPage("/unauthorized")
                 .and()
-                .logout().logoutSuccessUrl("/");
+                .logout()
+                .logoutSuccessUrl("/");
     }
 
     @Override
