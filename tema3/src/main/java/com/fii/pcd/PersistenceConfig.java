@@ -59,8 +59,8 @@ public class PersistenceConfig {
     private Properties hibProperties() {
         Properties properties = new Properties();
         properties.put(PROPERTY_NAME_HIBERNATE_DIALECT, "org.hibernate.dialect.MySQL5InnoDBDialect");
-//        properties.put(PROPERTY_NAME_HIBERNATE_SHOW_SQL, "true");
-//        properties.put("hibernate.hbm2ddl.auto", "update");
+        properties.put(PROPERTY_NAME_HIBERNATE_SHOW_SQL, "true");
+        properties.put("hibernate.hbm2ddl.auto", "update");
         return properties;
     }
 

@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
+@SuppressWarnings("SpringJavaAutowiringInspection")
 @Service
 public class CustomUserDetailsService implements UserDetailsService {
 
@@ -39,7 +40,7 @@ public class CustomUserDetailsService implements UserDetailsService {
         if (professor != null) {
             return new CustomUserDetails(
                     professor.getName(),
-                    "$2a$04$EuYk2M3WxyieHzsURxIVVu8i74PamDNJQv2x//pOIKmv0CFSVA2Uq",
+                    professor.getPassword(),
                     professor.getId(),
                     true,
                     true,
@@ -49,7 +50,7 @@ public class CustomUserDetailsService implements UserDetailsService {
         }
         return new CustomUserDetails(
                 student.getName(),
-                "$2a$04$EuYk2M3WxyieHzsURxIVVu8i74PamDNJQv2x//pOIKmv0CFSVA2Uq",
+                student.getPassword(),
                 student.getId(),
                 true,
                 true,

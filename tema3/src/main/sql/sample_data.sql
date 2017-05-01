@@ -2,23 +2,23 @@ INSERT INTO subject(name) VALUES('Mathematics');
 INSERT INTO subject(name) VALUES('Computer Science');
 INSERT INTO subject(name) VALUES('English');
 
-INSERT INTO professor(name, id_subject) VALUES ('John Oliver', 1);
-INSERT INTO professor(name, id_subject) VALUES ('Andrew Johnson', 2);
-INSERT INTO professor(name, id_subject) VALUES ('Mary-Anne Robinson', 3);
+INSERT INTO professor(name, password, id_subject) VALUES ('John Oliver', '$2a$04$EuYk2M3WxyieHzsURxIVVu8i74PamDNJQv2x//pOIKmv0CFSVA2Uq', 1);
+INSERT INTO professor(name, password, id_subject) VALUES ('Andrew Johnson', '$2a$04$EuYk2M3WxyieHzsURxIVVu8i74PamDNJQv2x//pOIKmv0CFSVA2Uq', 2);
+INSERT INTO professor(name, password, id_subject) VALUES ('Mary-Anne Robinson', '$2a$04$EuYk2M3WxyieHzsURxIVVu8i74PamDNJQv2x//pOIKmv0CFSVA2Uq', 3);
 
 INSERT INTO classs(name) VALUES ('9A');
 INSERT INTO classs(name) VALUES ('10B');
 INSERT INTO classs(name) VALUES ('11D');
 
-INSERT INTO student(name, id_classs) VALUES ('Jim Kowitz', 1);
-INSERT INTO student(name, id_classs) VALUES ('Ellie Rotberg', 1);
-INSERT INTO student(name, id_classs) VALUES ('Stuart Benson', 1);
-INSERT INTO student(name, id_classs) VALUES ('Jerry Curious', 2);
-INSERT INTO student(name, id_classs) VALUES ('Saddie Happier', 2);
-INSERT INTO student(name, id_classs) VALUES ('Alex Hunter', 2);
-INSERT INTO student(name, id_classs) VALUES ('Fraz Sheikh', 3);
-INSERT INTO student(name, id_classs) VALUES ('Rob Dunham', 3);
-INSERT INTO student(name, id_classs) VALUES ('Tryst Toll', 3);
+INSERT INTO student(name, password, id_classs) VALUES ('Jim Kowitz', '$2a$04$EuYk2M3WxyieHzsURxIVVu8i74PamDNJQv2x//pOIKmv0CFSVA2Uq', 1);
+INSERT INTO student(name, password, id_classs) VALUES ('Ellie Rotberg', '$2a$04$EuYk2M3WxyieHzsURxIVVu8i74PamDNJQv2x//pOIKmv0CFSVA2Uq', 1);
+INSERT INTO student(name, password, id_classs) VALUES ('Stuart Benson', '$2a$04$EuYk2M3WxyieHzsURxIVVu8i74PamDNJQv2x//pOIKmv0CFSVA2Uq', 1);
+INSERT INTO student(name, password, id_classs) VALUES ('Jerry Curious', '$2a$04$EuYk2M3WxyieHzsURxIVVu8i74PamDNJQv2x//pOIKmv0CFSVA2Uq', 2);
+INSERT INTO student(name, password, id_classs) VALUES ('Saddie Happier', '$2a$04$EuYk2M3WxyieHzsURxIVVu8i74PamDNJQv2x//pOIKmv0CFSVA2Uq', 2);
+INSERT INTO student(name, password, id_classs) VALUES ('Alex Hunter', '$2a$04$EuYk2M3WxyieHzsURxIVVu8i74PamDNJQv2x//pOIKmv0CFSVA2Uq', 2);
+INSERT INTO student(name, password, id_classs) VALUES ('Fraz Sheikh', '$2a$04$EuYk2M3WxyieHzsURxIVVu8i74PamDNJQv2x//pOIKmv0CFSVA2Uq', 3);
+INSERT INTO student(name, password, id_classs) VALUES ('Rob Dunham', '$2a$04$EuYk2M3WxyieHzsURxIVVu8i74PamDNJQv2x//pOIKmv0CFSVA2Uq', 3);
+INSERT INTO student(name, password, id_classs) VALUES ('Tryst Toll', '$2a$04$EuYk2M3WxyieHzsURxIVVu8i74PamDNJQv2x//pOIKmv0CFSVA2Uq', 3);
 
 INSERT INTO classs_professor(id_classs, id_professor) VALUES (1, 1);
 INSERT INTO classs_professor(id_classs, id_professor) VALUES (1, 2);

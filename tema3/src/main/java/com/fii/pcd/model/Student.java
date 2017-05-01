@@ -14,6 +14,9 @@ public class Student {
     @Column(name = "name")
     private String name;
 
+    @Column(name = "password")
+    private String password;
+
     @ManyToOne
     @JoinColumn(name = "id_classs")
     private Classs classs;
@@ -38,6 +41,14 @@ public class Student {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public Classs getClasss() {
