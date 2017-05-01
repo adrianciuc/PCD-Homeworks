@@ -27,10 +27,21 @@
         <h1>EDUE</h1>
         <h3>Online school catalog</h3>
         <br>
-        <a href="#about" class="btn btn-dark btn-lg">Get it now</a>
-        <span></span>
         <a href="/login" class="btn btn-dark btn-lg">Login</a>
+        <span></span>
+        <a href="#about" class="btn btn-dark btn-lg">About</a>
     </div>
 </header>
+<section id="about" class="about">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <iframe src="https://docs.google.com/presentation/d/1keOlSFwiUGvjx6J5WKKwGA8KYfDQhV67mS_Cpo4Lesc/embed?start=false&loop=false&delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+            </div>
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container -->
+</section>
 </body>
 </html>
