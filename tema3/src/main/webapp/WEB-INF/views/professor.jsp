@@ -53,7 +53,7 @@
                                                  class="danger"
                                             </c:when>
                                             <c:otherwise>
-                                                class="success"
+
                                             </c:otherwise>
                                         </c:choose>
                                     </c:forEach>
