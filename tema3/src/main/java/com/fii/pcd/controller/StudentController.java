@@ -1,5 +1,6 @@
 package com.fii.pcd.controller;
 
+import com.fii.pcd.bean.StudentAndClassBean;
 import com.fii.pcd.bean.StudentClassSubjectGradeBean;
 import com.fii.pcd.security.CustomUserDetails;
 import com.fii.pcd.service.StudentService;
@@ -27,6 +28,8 @@ public class StudentController {
         Integer studentId = getAuthenticatedStudent().getUserId();
         List<StudentClassSubjectGradeBean> studentsClassSubjGrade = studentService.getClassDisciplineGradeForStudent(studentId);
 
+        StudentAndClassBean studentAndClass = studentService.getStudentNameAndClassForId(studentId);
+        model.addAttribute("studentAndClass", studentAndClass);
         model.addAttribute("students", studentsClassSubjGrade);
         return "student";
     }
