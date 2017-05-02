@@ -15,7 +15,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.view.RedirectView;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 import static java.lang.Integer.parseInt;
@@ -57,10 +59,10 @@ public class ProfessorController {
     }
 
     @RequestMapping(method = POST)
-    public String addGradeToStudent(Model model,
+    public RedirectView addGradeToStudent(Model model,
                                     @RequestParam("studentGrade") String studentGrade,
                                     @RequestParam("studentId") String studentId,
-                                    @RequestParam("subjectId") String subjectId) {
+                                    @RequestParam("subjectId") String subjectId, HttpServletRequest request) {
 
         Student student = studentService.getStudentForStudentId(parseInt(studentId));
         Subject subject = subjectService.getSubjectForSubjectId(parseInt(subjectId));
@@ -71,7 +73,7 @@ public class ProfessorController {
         grade.setStudent(student);
 
         studentService.saveGradeForStudentAndSubject(grade);
-        return "professor";
+        return new RedirectView (request.getContextPath() + "/professor");
     }
 
 }
