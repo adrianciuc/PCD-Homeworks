@@ -72,11 +72,10 @@
                                             <input type="hidden" name="subjectId" type="hidden" value="${profNameAndSubject.subjectId}"/>
                                             <input type="hidden" name="studentId" type="hidden" value="${student.id}"/>
 
-                                            <input type="submit">
+                                            <button type="submit" style="background:none; border:none;padding:0;">
+                                                <span class="glyphicon glyphicon-plus"></span>
+                                            </button>
                                         </h:form>
-                                        <span class="glyphicon glyphicon-plus">
-
-                                        </span>
                                     </p>
                                 </td>
                             </tr>
