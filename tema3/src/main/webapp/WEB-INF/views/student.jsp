@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: adria
@@ -23,62 +24,23 @@
     <thead>
     <tr>
         <th>Id</th>
-        <th>Nume</th>
-        <th>Clasa</th>
-        <th>Materie</th>
-        <th>Nota</th>
+        <th>Name</th>
+        <th>Class</th>
+        <th>Subject</th>
+        <th>Grade</th>
     </tr>
     </thead>
     <tbody>
-    <tr>
-        <td>1</td>
-        <td>Column content</td>
-        <td>Column content</td>
-        <td>Column content</td>
-        <td>Column content</td>
-    </tr>
-    <tr>
-        <td>2</td>
-        <td>Column content</td>
-        <td>Column content</td>
-        <td>Column content</td>
-        <td>Column content</td>
-    </tr>
-    <tr class="info">
-        <td>3</td>
-        <td>Column content</td>
-        <td>Column content</td>
-        <td>Column content</td>
-        <td>Column content</td>
-    </tr>
-    <tr class="success">
-        <td>4</td>
-        <td>Column content</td>
-        <td>Column content</td>
-        <td>Column content</td>
-        <td>Column content</td>
-    </tr>
-    <tr class="danger">
-        <td>5</td>
-        <td>Column content</td>
-        <td>Column content</td>
-        <td>Column content</td>
-        <td>Column content</td>
-    </tr>
-    <tr class="warning">
-        <td>6</td>
-        <td>Column content</td>
-        <td>Column content</td>
-        <td>Column content</td>
-        <td>Column content</td>
-    </tr>
-    <tr class="active">
-        <td>7</td>
-        <td>Column content</td>
-        <td>Column content</td>
-        <td>Column content</td>
-        <td>Column content</td>
-    </tr>
+        <c:forEach items="${students}" var="student" varStatus="loop">
+
+            <tr>
+                <td>${loop.count}</td>
+                <td>${student.name}</td>
+                <td>${student.className}</td>
+                <td>${student.subjectName}</td>
+                <td>${student.grade}</td>
+            </tr>
+        </c:forEach>
     </tbody>
 </table>
 
