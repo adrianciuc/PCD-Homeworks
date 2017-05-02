@@ -1,6 +1,7 @@
 package com.fii.pcd.service;
 
 
+import com.fii.pcd.bean.StudentAndClassBean;
 import com.fii.pcd.bean.StudentClassSubjectGradeBean;
 import com.fii.pcd.model.Grade;
 import com.fii.pcd.model.Student;
@@ -69,5 +70,15 @@ public class StudentService {
             }
         }
         return selectedGrades;
+    }
+
+    public StudentAndClassBean getStudentNameAndClassForId(int studentId){
+        StudentAndClassBean studentAndClass = new StudentAndClassBean();
+        Student student = studentRepository.findOne(studentId);
+
+        studentAndClass.setStudentName(student.getName());
+        studentAndClass.setClassName(student.getClasss().getName());
+
+        return studentAndClass;
     }
 }

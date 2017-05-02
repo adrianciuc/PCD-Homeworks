@@ -12,6 +12,8 @@ public class StudentBean {
 
     private List<Grade> grades;
 
+    private String average;
+
     public int getId() {
         return id;
     }
@@ -33,4 +35,12 @@ public class StudentBean {
     }
 
     public void setGrades(List<Grade> grades) { this.grades = grades; }
+
+    public String getAverage() {
+        return average;
+    }
+
+    public void setAverage(String average) {
+        this.average = average;
+    }
 }

@@ -16,6 +16,7 @@
     <script src="../../js/bootstrap.min.js"></script>
 </head>
 <body>
+<h1>Hi ${studentAndClass.studentName}, student in class ${studentAndClass.className} </h1>
 <form id="logout" action="/logout" method="post" >
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
     <input name="submit" type="submit" value="Logout" />
@@ -24,8 +25,6 @@
     <thead>
     <tr>
         <th>Id</th>
-        <th>Name</th>
-        <th>Class</th>
         <th>Subject</th>
         <th>Grade</th>
     </tr>
@@ -35,8 +34,6 @@
 
             <tr>
                 <td>${loop.count}</td>
-                <td>${student.name}</td>
-                <td>${student.className}</td>
                 <td>${student.subjectName}</td>
                 <td>${student.grade}</td>
             </tr>
