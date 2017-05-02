@@ -33,15 +33,15 @@ public class StudentService {
 
         for (Subject subject : subjects) {
             List<Grade> gradesForThatSubject = getGradesForStudentAtSubject(student, subject);
-            StudentClassSubjectGradeBean bean = new StudentClassSubjectGradeBean();
 
             for(Grade grade: gradesForThatSubject) {
+                StudentClassSubjectGradeBean bean = new StudentClassSubjectGradeBean();
                 bean.setName(student.getName());
                 bean.setClassName(student.getClasss().getName());
                 bean.setSubjectName(subject.getName());
                 bean.setGrade(grade.getGrade());
+                beans.add(bean);
             }
-            beans.add(bean);
         }
         return beans;
 
