@@ -3,9 +3,7 @@ package com.fii.pcd.service;
 import com.fii.pcd.bean.ClassWithStudentsBean;
 import com.fii.pcd.bean.ProfessorAndSubjectBean;
 import com.fii.pcd.bean.StudentBean;
-import com.fii.pcd.model.Classs;
-import com.fii.pcd.model.Professor;
-import com.fii.pcd.model.Student;
+import com.fii.pcd.model.*;
 import com.fii.pcd.repository.ProfessorRepository;
 import com.fii.pcd.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,12 +16,16 @@ import java.util.List;
 public class ProfessorService {
 
     private final ProfessorRepository professorRepository;
+
     private final StudentRepository studentRepository;
 
+    private StudentService studentService;
+
     @Autowired
-    public ProfessorService(ProfessorRepository professorRepository, StudentRepository studentRepository) {
+    public ProfessorService(ProfessorRepository professorRepository, StudentRepository studentRepository, StudentService studentService) {
         this.professorRepository = professorRepository;
         this.studentRepository = studentRepository;
+        this.studentService = studentService;
     }
 
     public List<ClassWithStudentsBean> getClassesForProffesor(int professorId) {
@@ -41,7 +43,8 @@ public class ProfessorService {
                 StudentBean studentToAdd = new StudentBean();
                 studentToAdd.setId(student.getId());
                 studentToAdd.setName(student.getName());
-                studentToAdd.setGrades(student.getGrades());
+                studentToAdd.setGrades(studentService.getGradesForStudentAtSubject(student, p.getSubject()));
+                studentToAdd.setAverage(getAverageGradeForStudentAndSubject(student, p.getSubject()) + "");
                 studentBeans.add(studentToAdd);
 
             }
@@ -62,6 +65,19 @@ public class ProfessorService {
         professorAndSubject.setSubjectId(p.getSubject().getId());
 
         return professorAndSubject;
+    }
+
+    public double getAverageGradeForStudentAndSubject(Student student, Subject subject) {
+        List<Grade> grades = studentService.getGradesForStudentAtSubject(student, subject);
+        double total = 0.0;
+        int count = 0;
+
+        for (Grade grade : grades) {
+            total += Double.parseDouble(grade.getGrade());
+            count ++;
+        }
+
+        return total/ (double) count;
     }
 
 }

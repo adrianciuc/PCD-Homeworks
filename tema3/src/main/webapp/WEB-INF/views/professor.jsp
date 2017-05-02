@@ -42,21 +42,20 @@
                             <th>Name</th>
                             <th>Grades</th>
                             <th>Add Grade</th>
+                            <th>Average</th>
                         </tr>
                     </thead>
                     <tbody>
                         <c:forEach items="${profClass.students}" var="student" varStatus="loop">
                             <tr
-                                    <c:forEach items="${student.grades}" var="gradeObject">
                                         <c:choose>
-                                            <c:when test="${gradeObject.grade lt '5'}">
+                                            <c:when test="${student.average lt '5'}">
                                                  class="danger"
                                             </c:when>
                                             <c:otherwise>
-
+                                                class="success"
                                             </c:otherwise>
                                         </c:choose>
-                                    </c:forEach>
                             >
                                 <td>${loop.count}</td>
                                 <td>${student.name}</td>
@@ -79,6 +78,7 @@
                                         </span>
                                     </p>
                                 </td>
+                                <td>${student.average}</td>
                             </tr>
                         </c:forEach>
                     </tbody>
