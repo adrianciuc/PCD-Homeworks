@@ -43,5 +43,27 @@
     </div>
     <!-- /.container -->
 </section>
+<section id="about1" class="about">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <iframe src="https://docs.google.com/document/d/1uePpM8H_90ry4zwjo2hW3RU1E9U4a85GlXYbfj1rJ6Q/pub?embedded=true" frameborder="10" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+            </div>
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container -->
+</section>
+<section id="about2" class="about">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <img src="../../img/plan.png" />
+            </div>
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container -->
+</section>
 </body>
 </html>
