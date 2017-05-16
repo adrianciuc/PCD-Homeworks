@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -24,14 +25,13 @@ public class ProfessorController {
         this.professorService = professorService;
     }
 
-    @RequestMapping(method = GET)
-    public String getProfessorsPage(Model model) {
+    @RequestMapping(method = GET, params = "profId")
+    public String getProfessorsPage(Model model, @RequestParam(value = "profId") int profId) {
 
-        // TODO change hardcoded '1' to dynamic id provided in URL
-        List<ClassWithStudentsBean> classesOfProffesor = professorService.getClassesForProffesor(1);
+        List<ClassWithStudentsBean> classesOfProffesor = professorService.getClassesForProffesor(profId);
         model.addAttribute("profClasses", classesOfProffesor);
 
-        ProfessorAndSubjectBean professorAndSubject = professorService.getProfessorNameAndSubjectForId(1);
+        ProfessorAndSubjectBean professorAndSubject = professorService.getProfessorNameAndSubjectForId(profId);
         model.addAttribute("profNameAndSubject", professorAndSubject);
         return "professor";
     }
