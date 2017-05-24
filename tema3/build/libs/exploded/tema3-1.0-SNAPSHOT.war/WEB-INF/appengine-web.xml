@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<appengine-web-app xmlns="http://appengine.google.com/ns/1.0">
+  <application>edue-165617</application>
+  <version>alpha-001</version>
+  <threadsafe>true</threadsafe>
+  <use-google-connector-j>true</use-google-connector-j>
+  <system-properties>
+    <property name="cloudsql.url" value="jdbc:google:mysql://edue-165617:europe-west1:edue-database/test?user=edue&amp;password=1234"/>
+    <property name="cloudsql.url.dev" value="jdbc:mysql://localhost/test?user=edue&amp;password=1234"/>
+  </system-properties>
+</appengine-web-app>
