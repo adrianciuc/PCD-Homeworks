@@ -19,6 +19,10 @@
 <body>
 
     <h1>Hi ${profNameAndSubject.professorName} , proffessor of ${profNameAndSubject.subjectName} </h1>
+    <form id="logout" action="/logout" method="post" >
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+        <input name="submit" type="submit" value="Logout" />
+    </form>
 
 
     <ul class="nav nav-tabs">
@@ -38,21 +42,20 @@
                             <th>Name</th>
                             <th>Grades</th>
                             <th>Add Grade</th>
+                            <th>Average</th>
                         </tr>
                     </thead>
                     <tbody>
                         <c:forEach items="${profClass.students}" var="student" varStatus="loop">
                             <tr
-                                    <c:forEach items="${student.grades}" var="gradeObject">
                                         <c:choose>
-                                            <c:when test="${gradeObject.grade lt '5'}">
+                                            <c:when test="${student.average lt '5'}">
                                                  class="danger"
                                             </c:when>
                                             <c:otherwise>
                                                 class="success"
                                             </c:otherwise>
                                         </c:choose>
-                                    </c:forEach>
                             >
                                 <td>${loop.count}</td>
                                 <td>${student.name}</td>
@@ -61,6 +64,7 @@
                                         <span><c:if test="${innerloop.index ne '0'}">,</c:if>${gradeObject.grade}</span>
                                     </c:forEach>
                                 </td>
+<<<<<<< HEAD
                                 <td><p>
                                         <%--<h:form action="/professor" method="post">
                                             <h:input path="studentGrade"></h:input>
@@ -70,6 +74,22 @@
                                         <span class='glyphicon glyphicon-plus'></span>
                                     </p>
                                 </td>
+=======
+                                <td>
+                                    <p>
+                                        <h:form action="/professor" method="post">
+                                            <input name="studentGrade" />
+                                            <input type="hidden" name="subjectId" type="hidden" value="${profNameAndSubject.subjectId}"/>
+                                            <input type="hidden" name="studentId" type="hidden" value="${student.id}"/>
+
+                                            <button type="submit" style="background:none; border:none;padding:0;">
+                                                <span class="glyphicon glyphicon-plus"></span>
+                                            </button>
+                                        </h:form>
+                                    </p>
+                                </td>
+                                <td>${student.average}</td>
+>>>>>>> 48617bc16cf52872b586e34e1e8f4eedf43d7e8f
                             </tr>
                         </c:forEach>
                     </tbody>

@@ -16,6 +16,9 @@ public class Professor {
     @Column(name = "name")
     private String name;
 
+    @Column(name = "password")
+    private String password;
+
     @ManyToMany(mappedBy = "professors", fetch = EAGER)
     private List<Classs> classses;
 
@@ -37,6 +40,14 @@ public class Professor {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public List<Classs> getClassses() {

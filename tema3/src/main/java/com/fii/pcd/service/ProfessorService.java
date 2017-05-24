@@ -20,12 +20,20 @@ import java.util.List;
 public class ProfessorService {
 
     private final ProfessorRepository professorRepository;
+
     private final StudentRepository studentRepository;
 
+    private StudentService studentService;
+
     @Autowired
+<<<<<<< HEAD
     public ProfessorService(ProfessorRepository professorRepository, StudentRepository studentRepository, SubjectRepository subjectRepository) {
+=======
+    public ProfessorService(ProfessorRepository professorRepository, StudentRepository studentRepository, StudentService studentService) {
+>>>>>>> 48617bc16cf52872b586e34e1e8f4eedf43d7e8f
         this.professorRepository = professorRepository;
         this.studentRepository = studentRepository;
+        this.studentService = studentService;
     }
 
     public List<ClassWithStudentsBean> getClassesForProffesor(int professorId) {
@@ -41,8 +49,10 @@ public class ProfessorService {
             for (Student student : students) {
 
                 StudentBean studentToAdd = new StudentBean();
+                studentToAdd.setId(student.getId());
                 studentToAdd.setName(student.getName());
-                studentToAdd.setGrades(student.getGrades());
+                studentToAdd.setGrades(studentService.getGradesForStudentAtSubject(student, p.getSubject()));
+                studentToAdd.setAverage(getAverageGradeForStudentAndSubject(student, p.getSubject()) + "");
                 studentBeans.add(studentToAdd);
 
             }
@@ -63,7 +73,19 @@ public class ProfessorService {
         professorAndSubject.setSubjectId(p.getSubject().getId());
 
         return professorAndSubject;
+    }
 
+    public double getAverageGradeForStudentAndSubject(Student student, Subject subject) {
+        List<Grade> grades = studentService.getGradesForStudentAtSubject(student, subject);
+        double total = 0.0;
+        int count = 0;
+
+        for (Grade grade : grades) {
+            total += Double.parseDouble(grade.getGrade());
+            count ++;
+        }
+
+        return total/ (double) count;
     }
 
 

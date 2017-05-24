@@ -18,4 +18,9 @@ public class SubjectService {
     public Subject getSubjectForSubjectId(int subjectId) {
         return subjectRepository.findOne(subjectId);
     }
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 48617bc16cf52872b586e34e1e8f4eedf43d7e8f
 }

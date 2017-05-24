@@ -3,6 +3,7 @@ package com.pcd.tema2.controller;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
+import java.util.Objects;
 import java.util.function.Supplier;
 
 import com.pcd.tema2.model.League;
@@ -59,19 +60,44 @@ public class LeagueController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @RequestMapping(value = "/{id}", consumes = APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/{id}", method = PUT, consumes = APPLICATION_JSON_VALUE)
     public ResponseEntity updateOne(@PathVariable String id,
                                     @RequestBody League league) throws URISyntaxException {
         return leagues.stream()
-                .filter(it -> isNullOrEmpty(league.getName()) || league.getName().equalsIgnoreCase(it.getName()))
-                .filter(it -> isNullOrEmpty(league.getCountry()) || league.getCountry().equalsIgnoreCase(it.getCountry()))
+                .filter(it -> Objects.equals(it.getId(), Integer.valueOf(id)))
                 .findFirst()
                 .map(it -> updateEntity(id, it, league))
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @RequestMapping(value = "/{id}", method = POST, consumes = APPLICATION_JSON_VALUE)
+    public ResponseEntity partialUpdateOne(@PathVariable String id,
+                                    @RequestBody League league) throws URISyntaxException {
+        return leagues.stream()
+                .filter(it -> Objects.equals(it.getId(), Integer.valueOf(id)))
+                .findFirst()
+                .map(it -> partialUpdateEntity(id, it, league))
+                .orElse(ResponseEntity.notFound().build());
+    }
+
     private ResponseEntity updateEntity(String id, League existentLeague, League newLeague) {
         newLeague.setId(Integer.valueOf(id));
+        leagues.remove(existentLeague);
+        leagues.add(newLeague);
+        return ResponseEntity.ok().build();
+    }
+
+    private ResponseEntity partialUpdateEntity(String id, League existentLeague, League newLeague) {
+        newLeague.setId(Integer.valueOf(id));
+        if (newLeague.getTeams() == null) {
+            newLeague.setTeams(existentLeague.getTeams());
+        }
+        if (newLeague.getCountry() == null) {
+            newLeague.setCountry(existentLeague.getCountry());
+        }
+        if (newLeague.getName() == null) {
+            newLeague.setName(existentLeague.getName());
+        }
         leagues.remove(existentLeague);
         leagues.add(newLeague);
         return ResponseEntity.ok().build();

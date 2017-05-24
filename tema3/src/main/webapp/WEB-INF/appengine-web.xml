@@ -4,6 +4,7 @@
   <version>alpha-001</version>
   <threadsafe>true</threadsafe>
   <use-google-connector-j>true</use-google-connector-j>
+  <sessions-enabled>true</sessions-enabled>
   <system-properties>
     <property name="cloudsql.url" value="jdbc:google:mysql://edue-165617:europe-west1:edue-database/test?user=edue&amp;password=1234"/>
     <property name="cloudsql.url.dev" value="jdbc:mysql://localhost/test?user=edue&amp;password=1234"/>

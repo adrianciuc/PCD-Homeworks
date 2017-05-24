@@ -32,6 +32,10 @@ repositories {
   mavenCentral()
 }
 
+configurations.all {
+    exclude group: "commons-logging", module: "commons-logging"
+}
+
 dependencies {
 
     // Servlet API
@@ -42,11 +46,15 @@ dependencies {
     compile 'com.google.appengine:appengine-api-1.0-sdk:1.6.3'
 
     // Spring
-    compile 'org.springframework:spring-context:4.0.0.RELEASE'
     compile 'org.springframework:spring-webmvc:4.0.0.RELEASE'
-    compile 'org.springframework:spring-tx:4.0.0.RELEASE'
-    compile 'org.springframework:spring-orm:4.0.0.RELEASE'
+    compile 'org.springframework.security:spring-security-web:4.0.0.RELEASE'
+    compile 'org.springframework.security:spring-security-config:4.0.0.RELEASE'
+    compile 'org.springframework.security:spring-security-taglibs:4.0.0.RELEASE'
     compile 'org.springframework.data:spring-data-jpa:1.11.3.RELEASE'
+
+    //Logging
+    compile 'org.slf4j:jcl-over-slf4j:1.7.12'
+    compile 'ch.qos.logback:logback-classic:1.1.3'
 
     // Apache Commons
     compile 'commons-dbcp:commons-dbcp:1.4'
@@ -64,7 +72,8 @@ dependencies {
 }
 
 appengine {  // App Engine tasks configuration
-  run {      // local (dev_appserver) configuration (standard environments only)
+    //noinspection GroovyAssignabilityCheck
+    run {      // local (dev_appserver) configuration (standard environments only)
     port = 8080                 // default
   }
 

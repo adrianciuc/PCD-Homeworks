@@ -1,5 +1,8 @@
 package com.fii.pcd.model;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -14,6 +17,9 @@ public class Student {
     @Column(name = "name")
     private String name;
 
+    @Column(name = "password")
+    private String password;
+
     @ManyToOne
     @JoinColumn(name = "id_classs")
     private Classs classs;
@@ -21,7 +27,12 @@ public class Student {
     @OneToMany(mappedBy = "student", fetch = FetchType.EAGER)
     private List<Grade> grades;
 
-    @OneToMany
+    @ManyToMany
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @JoinTable(
+            name="student_subject",
+            joinColumns=@JoinColumn(name="student_id", referencedColumnName="id"),
+            inverseJoinColumns=@JoinColumn(name="subject_id", referencedColumnName="id"))
     private List<Subject> subjects;
 
     public Integer getId() {
@@ -38,6 +49,14 @@ public class Student {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public Classs getClasss() {
